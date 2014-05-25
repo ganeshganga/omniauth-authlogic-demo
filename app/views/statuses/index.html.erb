@@ -1,0 +1,28 @@
+<% title "Statuses" %>
+
+<p>
+  <%= render 'form', :status => Status.new %>
+</p>
+
+<table>
+  <% for status in @statuses %>
+    <tr>
+      <td>
+        <% if status.user %>
+          <p class="username"><%= h status.user.username %> : </p>
+        <% else %>
+          <p class="no-username">unidentified user : </p>
+        <% end %>
+      </td>
+      <td>
+        <p>
+          <%=h status.message %>
+        </p>
+        <div class="time">
+          <%=h status.created_at.strftime('%b %d, %Y') %>
+        </div>
+
+      </td>
+    </tr>
+  <% end %>
+</table>
